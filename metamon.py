@@ -18,7 +18,7 @@ class metamon(object):
     def __init__(self, address, sign, msg):
         self.address = address
         self.sign = sign
-        self.msg
+        self.msg = msg
         self.headers = {}
 
         self.s = requests.Session()
