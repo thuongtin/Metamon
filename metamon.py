@@ -15,9 +15,10 @@ updateMonster_url = api_url + "updateMonster"
 
 class metamon(object):
 
-    def __init__(self, address, sign):
+    def __init__(self, address, sign, msg):
         self.address = address
         self.sign = sign
+        self.msg
         self.headers = {}
 
         self.s = requests.Session()
@@ -32,7 +33,7 @@ class metamon(object):
         self.metamon_list = []
 
         self.address_data = {"address": self.address}
-        self.login_data = {"address": self.address,"msg": "LogIn", "sign": self.sign}
+        self.login_data = {"address": self.address,"msg": self.msg, "sign": self.sign}
         self.checkBag_data = self.address_data
         self.getWalletPropertyList_data = {"address": address, "page": "1", "pageSize": "100"}
         self.composeMonsterEgg_data = self.address_data
@@ -252,7 +253,8 @@ class metamon(object):
 if __name__ == "__main__":
     my_address = "" # Your wallet address
     my_sign = "" # Your sign
-    my_metamon = metamon(address=my_address, sign=my_sign)
+    signIn_msg = ""
+    my_metamon = metamon(address=my_address, sign=my_sign, msg=signIn_msg)
     # my_metamon.set_local_time("06:00")    # You can set a loacl time which scrypt will run. The time format is "xx:xx", hour and minute
     # my_metamon.set_utc_time("22:00")    # You can set a utc time which scrypt will run. The time format is "xx:xx", hour and minute
     my_metamon.login()
